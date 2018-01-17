@@ -1,0 +1,78 @@
+
+Before the code is run make sure you have the following checklist ready.
+
+CHECK - Make sure the mp stream is running. CHECK - Make sure the influx is running fine. 
+CHECK - Make sure you have all python modules installed as given in the requirements.txt file.
+
+To install the requirements from the requirements.txt file follow the
+steps below: 
+1. sudo apt-get install python-pip 
+2. sudo pip install -r requirements.txt 
+3. pip freeze \#To check if all the required modules have been installed.
+
+Getting started with running the code!
+
+To get started with running the application, you need to run the app.py.
+Before running the app.py, make sure that you switch to the root user.
+\# cd consumer-tophost \# sudo -s \# python app.py
+
+1Q) How to start the application?
+
+1.If you want to pass two values. curl -i
+"http://0.0.0.0:8083/start?streamname1=01::10:01&streamname2=01::10:02”
+-u admin:secret 2.If you want to pass three values. curl -i
+"http://0.0.0.0:8083/start?streamname1=01::10:01&streamname2=01::10:02&streamname3=01::10:03”
+-u admin:secret
+
+e.g: curl -i
+"http://0.0.0.0:8083/start?streamname1=01::10:01&streamname2=01::10:02”
+-u admin:secret HTTP/1.0 200 OK Content-Type: application/json
+Set-Cookie:
+session=eyJzdHJlYW0iOnsiIGIiOiJNREU2T2pjeSJ9fQ.DB7CLA.Cy\_JADjYszkrdZdyR34gW9aepYw;
+HttpOnly; Path=/ Content-Length: 37 Server: Werkzeug/0.12 Python/2.7.9
+Date: Sun, 11 Jun 2017 11:59:40 GMT
+
+Note: If you now open the influxdb, you should see the database created.
+Also, if you check the console where you ran the app.py, you will see
+the output getting populated.
+
+2Q)How to find the status of the tophost?
+
+curl -i "http://localhost:8083/status" -u admin:secret
+
+3Q)Total number of packets exchanged:
+
+curl -i "localhost:8083/tpe" -u admin:secret
+
+4Q)Maximum packet:
+
+curl -i "localhost:8083/max\_packet" -u admin:secret
+
+5Q)Minimum packet:
+
+curl -i "localhost:8083/min\_packet" -u admin:secret
+
+6Q)Last packet:
+
+curl -i "localhost:8083/last\_packet" -u admin:secret
+
+7Q)Most Active packets:
+
+curl -i "localhost:8083/active\_tuple" -u admin:secret
+
+8Q)Average number of packets exchanged:
+
+curl -i "localhost:8083/average\_packets" -u admin:secret
+
+9Q)To see the content of the database:
+
+curl -i "localhost:8083/tasks" -u admin:secret
+
+10Q)How to stop the application?
+
+curl -i "localhost:8083/stop" -u admin:secret
+
+Please, refer to /consumer-tophost/ProgressTracker.txt for a detailed assistance on all the features provided
+by our product.
+
+We thank Prof.Patrik Arlos for all the time and support he has provided us through the development stages of our project.
